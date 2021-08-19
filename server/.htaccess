@@ -1,0 +1,8 @@
+AddDefaultCharset utf-8
+
+RewriteEngine on
+RewriteRule ^public/(.*)$ public/$1 [L]
+RewriteRule ^phpmyadmin/(.*)$ phpmyadmin/$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^.*$ [NC,L]
+RewriteRule ^.*$ index.php [NC,L]
