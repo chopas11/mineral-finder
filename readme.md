@@ -20,8 +20,8 @@ Create network:
 
 Create containers:
 
-    $ docker create -it -p 80:80 --volume "$(pwd)/server/:/var/www/html/" --net=my-network --name=server app_server && \
-    docker create -it -p 3306:3306 --net=my-network --name=db app_db
+    $ docker create -it -p 80:80 --volume "$(pwd)/server/:/var/www/html/" --net=my-network --name=server mineral-finder_server && \
+    docker create -it -p 3306:3306 --net=my-network --name=db mineral-finder_db
 
 Start containers:
 
