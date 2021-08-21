@@ -1,38 +1,28 @@
-# Файл docker-compose должен начинаться с тега версии.
-# Мы используем "3" так как это - самая свежая версия на момент написания этого кода.
-
 version: '3'
 
-# Следует учитывать, что docker-composes работает с сервисами.
-# 1 сервис = 1 контейнер.
-# Сервисом может быть клиент, сервер, сервер баз данных...
-# Раздел, в котором будут описаны сервисы, начинается с 'services'.
-
 services:
-  # Сервис для поднятия СУБД Mysql
+  # Service for DBMS MYSQL
   db:
-    # Ключевое слово "build" позволяет задать
-    # путь к файлу Dockerfile, который нужно использовать для создания образа,
-    # который позволит запустить сервис.
-
-    build: db/
-
+    image: mysql
+    # Mysql port 3306
     ports:
       - '3306:3306'
-    tty: true
-    command: echo "test"
+    #
+    volumes:
+      - ./db:/var/lib/mysql
+    environment:
+      # MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: SashaSasha100
+      # MYSQL_DATABASE: mineral
+      # MYSQL_USER: user
+      # MYSQL_PASSWORD: password
 
-  # Сервис для собственно сайта
-
+  # Service for apache2 web server
   server:
     build: server/
-
-    # Пробросим порт 80 на 3000 порт коспьютера
-
+    volumes:
+      - ./server:/var/www/html
+    # Web server port 80
     ports:
       - '80:80'
     tty: true
-    command: echo "test"
-  # Ключевое слово 'depends_on' позволяет указывать, должен ли сервис,
-  # прежде чем запуститься, ждать, когда будут готовы к работе другие сервисы.
-  # Нам нужно, чтобы сервис 'client' дождался бы готовности к работе сервиса 'server'.

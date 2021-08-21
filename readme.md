@@ -1,20 +1,20 @@
-﻿# Mineral-finder Project
+﻿# Mineral-finder in Docker
 
 Author: chopas11
 
 Version: 2.2.1
 
-Date: 19.08.2021
+Date: 21.08.2021
 
 ## Description
 
 **Usage:**
 
-Build all containers:
+Start all containers:
 
-    $ docker-compose build
+    $ docker-compose up
 
-Create network:
+<!-- Create network:
 
     $ docker network create my-network
 
@@ -27,11 +27,12 @@ Start containers:
 
     $ docker start server && \
     docker start db
+    -->
 
 **Database Init:**
 
     $ CREATE DATABASE mineral;
-    CREATE USER 'chopas'@'%' IDENTIFIED BY 'password';
-    GRANT ALL PRIVILEGES ON *.* TO 'chopas'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
+    CREATE USER 'chopas'@'%' IDENTIFIED BY 'SashaSasha100';
+    GRANT ALL PRIVILEGES ON *.* TO 'chopas'@'%' WITH GRANT OPTION;
     flush privileges;
     exit

@@ -1,8 +1,8 @@
 <?php
 
 return [
-	'host' => '192.168.88.50',
+	'host' => 'mineral-finder_db_1',
 	'name' => 'mineral',
 	'user' => 'chopas',
-	'password' => 'sasha100',
+	'password' => 'SashaSasha100',
 ];
